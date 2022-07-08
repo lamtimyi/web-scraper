@@ -12,7 +12,7 @@ describe('empty spec', () => {
 
     it.only("should be able to add things to cart", () => {
         homePage.search("body wash")
-        cy.get(':nth-child(1) > [data-test="@web/site-top-of-funnel/ProductCardWrapper"] > [data-test="@web/ProductCard/ProductCardVariantDefault"] > .styles__AddToCartButtonWrapper-sc-1iglypx-2 > .styles__StyledCartAndTryOnButtons-sc-bcz5ql-2 > div > [data-test="addToCartButton"]').click()
+        homePage.addToCartButton.click()
         cy.get(".hLNTEk .VBXLQ").click()
         cy.get(".iSSuMc")
         cy.get('.CartSummaryBar__CartSummarySpan-sc-nyamvu-1').should('contain','1 item')})
