@@ -1,21 +1,23 @@
+import { Target } from "../support/page.controller"
+
 const envFile = require("./env.json")
-const { HomePage } = require("../support/homepage")
 
 describe('empty spec', () => {
-    let username, password, homePage
+    let username, password
     beforeEach(() => { 
-        homePage = new HomePage
         username = envFile.username
         password = envFile.password
-        homePage.visitHomePage()
+        Target.TargetHomePage.visitHomePage()
     })
 
     it.only("should be able to add things to cart", () => {
-        homePage.search("body wash")
-        homePage.addToCartButton.click()
-        cy.get(".hLNTEk .VBXLQ").click()
-        cy.get(".iSSuMc")
-        cy.get('.CartSummaryBar__CartSummarySpan-sc-nyamvu-1').should('contain','1 item')})
+        Target.TargetHomePage.searchBarInput.type("body wash")
+        Target.TargetHomePage.searchButton.click()
+        cy.wait(5000)
+        Target.TargetHomePage.addToCartButton.click()
+        Target.TargetHomePage.viewCartAndCheckOutButton.click()
+        Target.TargetHomePage.cartSummary.should('contain','1 item')
+    })
 
     it("should be able to find the closest store", () => {
         cy.get('[data-test="@web/GlobalHeader/UtilityHeader/FindStores"]').click()

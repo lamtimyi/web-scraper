@@ -1,15 +1,24 @@
-describe('empty spec', () => {
+import { Google } from "../support/page.controller"
 
-  it("should be able to search - search bar", () => {
-    cy.visit('https://www.google.com')
-    cy.get(".gLFyf").type('Lam Tim Yi')
-    cy.get('.CqAVzb > center > .gNO89b').click()
-    cy.get(".yuRUbf a .LC20lb").first().contains("Tim Yi Lam")  })
+describe('empty spec', () => {
+  beforeEach(() => { 
+    Google.GoogleHomepage.visitHomePage()
+  })
+  
+
+  it.only("should be able to search - search bar", () => {
+    Google.GoogleHomepage.searchBarInput.type('Lam Tim Yi')
+    Google.GoogleHomepage.searchButton.click()
+    Google.GoogleHomepage.searchResult.first().contains("Tim Yi Lam")
+  })
 
   it("should be able to sign into a account", () => {
     cy.visit('https://www.google.com')
     cy.get(".gb_1").click()
-    cy.get("#identifierId").type('timyilam@gmail.com') }) //it doesn't let me do that because of certain policy
+    cy.get("#identifierId").type('timyilam@gmail.com')
+   }) 
+   //it doesn't let me do that because of certain policy
+  
 
   it("should be able to search for an location in Google maps", () => {
     cy.visit('https://www.google.com')
@@ -20,7 +29,7 @@ describe('empty spec', () => {
       cy.visit('https://www.google.com')
       cy.get('.lnXdpd').should('be.visible')})
 
-    it.only("should have a visible mobile menu toggle", () => {
+    it("should have a visible mobile menu toggle", () => {
       cy.visit('https://www.google.com')
       cy.get('#mobile-menu-toggle').should('be.visible') })
 })

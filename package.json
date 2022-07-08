@@ -2,5 +2,9 @@
   "devDependencies": {
     "cypress": "^10.1.0",
     "install": "^0.13.0"
+  },
+  "dependencies": {
+    "save-dev": "^0.0.1-security",
+    "typescript": "^4.7.4"
   }
 }
