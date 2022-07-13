@@ -29,7 +29,7 @@ describe('empty spec', () => {
     Google.GoogleHomepage.darkThemeButton.should('contain','On')
 })
 
-  it.only("should be able to switch languages", () => {
+  it("should be able to switch languages", () => {
     Google.GoogleHomepage.settingButton.click()
     Google.GoogleHomepage.searchSettingButton.click({force: true})
     Google.GoogleHomepage.languagesButton.click()
